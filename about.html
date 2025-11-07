@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joki Petter.Exe | About</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-content">
+        <header>
+            <nav class="navbar">
+                <a href="index.html" class="logo">Petter.Exe Joki</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html" id="login-link">Login</a></li>
+                    
+                    <li class="dropdown" id="user-dropdown" style="display:none;">
+                        <button class="dropbtn">👤 Menu</button>
+                        <div class="dropdown-content">
+                            <a href="profile.html">Profile</a>
+                            <a href="#" onclick="alert('Hubungi kami di WA: 0812xxxxxx')">Contact Me</a>
+                            <a href="setting.html">Setting</a>
+                            <a href="ask.html">Ask</a>
+                            <a href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="about-page">
+            <h2>Tentang Layanan Joki Kami</h2>
+            
+            <section class="game-details">
+                <h3>Daftar Game & Penjelasan Layanan</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Game</th>
+                            <th>Kategori</th>
+                            <th>Penjelasan Joki</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Blox Fruit</td>
+                            <td>Action/Adventure</td>
+                            <td>Jasa *leveling* cepat, *grinding* *Bounty*, *farming* item langka (Fruit/Sword).</td>
+                        </tr>
+                        <tr>
+                            <td>King Legacy</td>
+                            <td>Action/RPG</td>
+                            <td>Fokus *leveling* hingga *max level*, *farming* Beli dan Gems, *unlock* *devil fruit*.</td>
+                        </tr>
+                        <tr>
+                            <td>Fish</td>
+                            <td>Simulasi/Farming</td>
+                            <td>Jasa tangkap ikan-ikan langka dan sulit, kumpulkan item eksklusif.</td>
+                        </tr>
+                        <tr>
+                            <td>Fish It</td>
+                            <td>Simulasi/Farming</td>
+                            <td>Layanan otomatisasi tangkapan, fokus pada *event* dan *season reward*.</td>
+                        </tr>
+                        <tr>
+                            <td>Steal A Brainrot</td>
+                            <td>Adventure/Puzzle</td>
+                            <td>Membantu menyelesaikan *puzzle* dan mendapatkan item/gelar tersembunyi.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="payment-methods">
+                <h3>Metode Pembayaran 💸</h3>
+                <p>Kami menerima pembayaran melalui:</p>
+                <div class="payment-options">
+                    <div class="payment-card">
+                        <h4>DANA</h4>
+                        <p>Transfer Langsung</p>
+                        <img src="images/dana_logo.png" alt="Logo DANA" class="pay-logo">
+                    </div>
+                    <div class="payment-card">
+                        <h4>GoPay</h4>
+                        <p>Transfer Langsung</p>
+                        <img src="images/gopay_logo.png" alt="Logo GoPay" class="pay-logo">
+                    </div>
+                    <div class="payment-card qris-card">
+                        <h4>QRIS (Semua Bank/E-Wallet)</h4>
+                        <img src="images/qris_code.png" alt="QRIS Code" class="qris-image">
+                        <small>Scan untuk Pembayaran Mudah & Cepat</small>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Panggil updateNavMenu agar menu dropdown tampil jika sudah login
+        document.addEventListener('DOMContentLoaded', updateNavMenu);
+    </script>
+</body>
+</html>

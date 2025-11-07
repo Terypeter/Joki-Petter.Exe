@@ -1,0 +1,123 @@
+/* ====================================================================
+   auth.css: Desain Khusus untuk Halaman Login dan Registrasi
+   ==================================================================== */
+
+/* --- Container Utama --- */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #121212; /* Background gelap */
+}
+
+/* --- Card Formulir --- */
+.auth-card {
+    background-color: #1e1e1e;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px; /* Batasi lebar agar fokus */
+    border: 1px solid #333;
+}
+
+.auth-card h1 {
+    color: var(--primary-color, #00ff88); /* Warna hijau/primary Anda */
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+.auth-card p {
+    text-align: center;
+    color: #bbb;
+    margin-bottom: 25px;
+}
+
+/* --- Form Group & Input --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ccc;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.auth-card input[type="text"],
+.auth-card input[type="password"],
+.auth-card input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #2a2a2a;
+    color: #fff;
+    box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
+    transition: border-color 0.3s;
+}
+
+.auth-card input:focus {
+    border-color: var(--primary-color, #00ff88);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+}
+
+/* --- Tombol Submit --- */
+.full-width {
+    width: 100%;
+}
+
+.btn.primary {
+    background-color: var(--primary-color, #00ff88);
+    color: #121212;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.btn.primary:hover {
+    background-color: #00cc66;
+}
+
+/* --- Teks Meta (Link Login/Register) --- */
+.auth-meta {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.auth-meta a {
+    color: var(--primary-color, #00ff88);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-meta a:hover {
+    text-decoration: underline;
+}
+
+
+/* Untuk setting.html dan profile.html */
+.profile-preview-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Membuat lingkaran */
+    object-fit: cover;
+    border: 3px solid var(--primary-color, #00ff88);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}

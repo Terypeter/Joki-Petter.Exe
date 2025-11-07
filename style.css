@@ -1,0 +1,760 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    /* --- SKEMA WARNA MASKULIN GELAP --- */
+    --primary-color: #1a73e8;      /* Biru Google yang Kuat (Aksen Utama) */
+    --secondary-color: #00bcd4;    /* Cyan/Aqua (Aksen Modern Kedua) */
+    --text-color: #e0e0e0;         /* Teks Putih Pudar untuk Kontras */
+    --bg-color: #2c3e50;          /* Background Biru Tua/Abu-abu Gelap */
+    --card-bg: #34495e;           /* Card Sedikit Lebih Terang dari Background */
+    --border-color: #4a627a;      /* Border Abu-abu Kebiruan */
+    --shadow-dark: rgba(0, 0, 0, 0.3); /* Shadow Lebih Kuat */
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* --- Aturan Dasar Responsif & Reset --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Membuat semua gambar/media tidak meluap dari kontainernya */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Mencegah scrolling horizontal yang tidak diinginkan */
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+}
+
+#main-content {
+    flex-grow: 1; /* Konten utama akan mengambil semua ruang yang tersedia */
+}
+
+/* Mengatur input agar fleksibel */
+input[type="text"], 
+input[type="password"], 
+input[type="email"],
+input[type="tel"],
+textarea, 
+select {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color); 
+    color: var(--text-color);
+    border-radius: 5px;
+    margin-bottom: 10px; /* Tambahkan sedikit margin bawah */
+}
+
+/* -------------------- 9. Loading Screen -------------------- */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--card-bg); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 3s forwards 2s; 
+}
+
+.loading-content {
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s;
+}
+
+#welcome-text {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(26, 115, 232, 0.7);
+}
+
+.spinner {
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* -------------------- 9. Navbar & Dropdown -------------------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px var(--shadow-dark);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 5px 10px;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 5px;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.dropbtn:hover {
+    background-color: #1565c0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--card-bg);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px var(--shadow-dark);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* -------------------- 1. Index.html Styles -------------------- */
+main {
+    padding: 20px 50px;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.profile-store {
+    flex: 0 0 250px;
+    text-align: center;
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow-dark);
+    border: 1px solid var(--border-color);
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Slider */
+.slider-container {
+    flex-grow: 1;
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px var(--shadow-dark);
+    height: 350px; 
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; 
+}
+
+.slide {
+    width: 33.333%; 
+    height: 350px;
+    flex-shrink: 0;
+    object-fit: cover; 
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.prev { left: 0; border-radius: 0 5px 5px 0; }
+.next { right: 0; border-radius: 5px 0 0 5px; }
+
+/* Joki Menu */
+.joki-menu h3 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    font-size: 2em;
+    text-shadow: 0 0 5px rgba(0, 188, 212, 0.7);
+}
+
+.game-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.game-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 4px 12px var(--shadow-dark);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border-color);
+    border-top: 3px solid var(--primary-color);
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(26, 115, 232, 0.5); 
+}
+
+.game-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.order-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+.order-btn:hover {
+    background-color: #0097a7;
+}
+
+/* -------------------- 2. About.html Styles -------------------- */
+.about-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.about-page th, .about-page td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-page th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+}
+
+.about-page tr:nth-child(even) {
+    background-color: var(--bg-color); 
+}
+
+/* Payment Methods */
+.payment-options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.payment-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 4px 12px var(--shadow-dark);
+    border: 1px solid var(--border-color);
+}
+
+.pay-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-top: 10px;
+}
+
+/* QRIS image di about.html */
+.qris-image {
+    max-width: 180px; 
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border: 5px solid var(--bg-color); 
+    border-radius: 5px;
+}
+
+/* -------------------- 3, 4. Login/Register Styles -------------------- */
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('images/roblox_bg.jpg') no-repeat center center/cover;
+}
+
+.auth-container {
+    background-color: rgba(52, 73, 94, 0.95); 
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 400px;
+    border-top: 5px solid var(--primary-color);
+    color: var(--text-color);
+}
+
+.auth-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.auth-container p {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-container label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.auth-btn {
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.auth-btn:hover {
+    background-color: #0097a7;
+}
+
+.switch-auth {
+    margin-top: 20px !important;
+    font-size: 0.9em;
+}
+
+.switch-auth a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* -------------------- 5, 6, 7. Profile, Order, Setting Styles -------------------- */
+.profile-page, .order-page, .setting-page, .ask-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--shadow-dark);
+    border: 1px solid var(--border-color);
+}
+
+.profile-card {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.edit-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.edit-btn:hover { background-color: #1565c0; }
+
+/* Order Form & Setting Form */
+.order-page form, .setting-page form {
+    display: grid;
+    gap: 15px;
+}
+
+.order-page label, .setting-page label {
+    font-weight: 600;
+}
+
+.order-page textarea { resize: vertical; }
+
+.order-submit-btn { margin-top: 30px; }
+
+fieldset {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+legend {
+    color: var(--secondary-color);
+    padding: 0 10px;
+    font-weight: 700;
+}
+
+/* Tambahan CSS untuk Orderan */
+.price-display {
+    padding: 15px;
+    background-color: var(--bg-color); 
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    margin-top: 10px;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.price-display strong {
+    color: var(--primary-color);
+}
+
+/* CSS Khusus QRIS di order.html */
+.qris-image-live {
+    max-width: 100%; 
+    height: auto;
+    width: 300px; /* Ukuran default yang cukup besar di desktop */
+    display: block;
+    margin: 0 auto; 
+    border: 5px solid var(--card-bg); 
+    border-radius: 10px;
+}
+
+/* Setting Page Specific */
+.profile-pic-edit {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic-edit img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+.upload-label {
+    display: inline-block;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* -------------------- 8. Ask.html Styles -------------------- */
+.ask-page h3 {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.ask-form-section {
+    padding: 20px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border-color);
+}
+
+.question-list-section {
+    padding: 20px;
+}
+
+.question-item {
+    background-color: var(--bg-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--secondary-color);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: var(--primary-color);
+}
+
+.question-text {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.answer-text {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.answer-text strong { color: var(--secondary-color); }
+
+.admin-controls button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.admin-controls button:hover {
+    color: var(--secondary-color);
+}
+
+/* -------------------- 10. FOOTER STYLES -------------------- */
+.main-footer {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 25px 50px;
+    text-align: center;
+    border-top: 3px solid var(--primary-color); 
+    font-size: 0.9em;
+    margin-top: 40px; 
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+.footer-content a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-content a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* ====================================================== */
+/* 🚨 MEDIA QUERIES (RESPONSIVITAS HP) 🚨 */
+/* ====================================================== */
+@media (max-width: 900px) {
+    /* Umum */
+    main {
+        padding: 20px;
+    }
+
+    /* Hero Section (Index) */
+    .hero {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Slider di HP */
+    .slider-container {
+        height: 250px; 
+    }
+    .slide {
+        height: 250px;
+    }
+
+    /* Navigasi di HP */
+    .navbar {
+        padding: 15px 20px;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Card/Halaman */
+    .profile-page, .order-page, .setting-page, .ask-page {
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    /* Navigasi di HP Kecil (Sederhana) */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .nav-links {
+        width: 100%;
+        justify-content: space-around;
+        gap: 5px;
+        margin-top: 10px;
+    }
+    .nav-links a, .dropbtn {
+        padding: 8px 5px;
+        font-size: 0.9em;
+    }
+    .dropdown {
+        flex-grow: 1;
+        text-align: right;
+    }
+    .dropdown-content {
+        right: auto;
+        left: 0;
+        min-width: 100%;
+    }
+
+    /* Game List di HP */
+    .game-list {
+        gap: 15px;
+    }
+    .game-card {
+        width: 45%; /* Dua kolom di HP */
+    }
+
+    /* QRIS Responsif */
+    .qris-image-live {
+        width: 80%; /* Gambar akan mengambil 80% dari lebar kontainer */
+        max-width: 200px; /* Batasi maksimal 200px agar tidak terlalu besar di beberapa HP */
+    }
+
+    /* Footer Responsif */
+    .main-footer {
+        padding: 20px;
+    }
+    .footer-content p {
+        font-size: 0.8em;
+    }
+}

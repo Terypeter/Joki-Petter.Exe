@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joki Petter.Exe | Order</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkLoginStatus('order.html')">
+    <div id="main-content">
+        <header>
+            <nav class="navbar">
+                <a href="index.html" class="logo">Petter.Exe Joki</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html" id="login-link">Login</a></li>
+                    
+                    <li class="dropdown" id="user-dropdown" style="display:none;">
+                        <button class="dropbtn">👤 Menu</button>
+                        <div class="dropdown-content">
+                            <a href="profile.html">Profile</a>
+                            <a href="#" onclick="alert('Hubungi kami di WA: 0812xxxxxx')">Contact Me</a>
+                            <a href="setting.html">Setting</a>
+                            <a href="ask.html">Ask</a>
+                            <a href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="order-page">
+            <h2>Formulir Pemesanan Joki</h2>
+            <form id="order-form">
+                <label for="game-select">Pilih Game Joki</label>
+                <select id="game-select" required>
+                    <option value="">-- Pilih Game --</option>
+                    <option value="Blox Fruit">Blox Fruit</option>
+                    <option value="King Legacy">King Legacy</option>
+                    <option value="Fish">Fish</option>
+                    <option value="Fish It">Fish It</option>
+                    <option value="Steal A Brainrot">Steal A Brainrot</option>
+                </select>
+
+                <label for="service-select">Pilih Paket Layanan</label>
+                <select id="service-select" required disabled>
+                    <option value="">-- Pilih Game Dahulu --</option>
+                </select>
+
+                <div class="price-display">
+                    <p><strong>Total Harga Paket:</strong> <span id="display-price">Rp 0</span></p>
+                </div>
+                
+                <fieldset>
+                    <legend>Detail Akun Roblox</legend>
+                    <label for="roblox-user">Username Roblox</label>
+                    <input type="text" id="roblox-user" required>
+                    
+                    <label for="roblox-pass">Password Roblox</label>
+                    <input type="password" id="roblox-pass" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Detail Kontak & Pembayaran</legend>
+                    <label for="contact-email">Email (Otomatis dari Profile)</label>
+                    <input type="email" id="contact-email" required readonly>
+                    
+                    <label for="contact-number">Nomor WhatsApp</label>
+                    <input type="tel" id="contact-number" placeholder="Contoh: 0812xxxxxx" required>
+
+                    <label for="payment-method">Metode Pembayaran</label>
+                    <select id="payment-method" required>
+                        <option value="DANA">DANA</option>
+                        <option value="GOPAY">GoPay</option>
+                        <option value="QRIS">QRIS</option>
+                    </select>
+
+                    <div id="qris-display" style="display:none; text-align: center; margin-top: 15px; background-color: var(--bg-color); padding: 15px; border-radius: 8px; border: 1px dashed var(--secondary-color);">
+                        <p style="color: var(--secondary-color); font-weight: 600; margin-bottom: 10px;">Silakan Scan QRIS di Bawah:</p>
+                        <img src="qris.jpg" alt="QRIS Code" class="qris-image-live">
+                    </div>
+
+                    <label for="payment-proof">Upload Bukti Pembayaran (Screenshot)</label>
+                    <input type="file" id="payment-proof" accept="image/*" required>
+                </fieldset>
+
+                <button type="submit" class="auth-btn order-submit-btn">Konfirmasi & Kirim Pesanan</button>
+            </form>
+        </main>
+    </div>
+    
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; <span id="current-year"></span> Petter.Exe Joki Service. All rights reserved.</p>
+            <p>Dibuat oleh Owner Petter.Exe | <a href="about.html">Syarat & Ketentuan</a></p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

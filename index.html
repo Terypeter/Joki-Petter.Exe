@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joki Petter.Exe | Home</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div id="loading-screen">
+        <div class="loading-content">
+            <h1 id="welcome-text">Welcome To Joki Petter.Exe</h1>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <header>
+            <nav class="navbar">
+                <a href="index.html" class="logo">Petter.Exe Joki</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html" id="login-link">Login</a></li>
+                    
+                    <li class="dropdown" id="user-dropdown" style="display:none;">
+                        <button class="dropbtn">👤 Menu</button>
+                        <div class="dropdown-content">
+                            <a href="profile.html">Profile</a>
+                            <a href="#" onclick="alert('Hubungi kami di WA: 0812xxxxxx')">Contact Me</a>
+                            <a href="setting.html">Setting</a>
+                            <a href="ask.html">Ask</a>
+                            <a href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="profile-store">
+                    <img src="profile.jpg" alt="Profile Store Petter.Exe" class="profile-pic">
+                    <h2>Petter.Exe Joki Services</h2>
+                    <p>Layanan Joki Game Roblox Terpercaya</p>
+                </div>
+                
+                <div class="slider-container">
+                    <div class="slider" id="main-slider">
+                        <img src="images/slider1.jpg" alt="Slider Image 1" class="slide">
+                        <img src="images/slider2.jpg" alt="Slider Image 2" class="slide">
+                        <img src="images/slider3.jpg" alt="Slider Image 3" class="slide">
+                    </div>
+                    <button class="prev" onclick="moveSlide(-1)">❮</button>
+                    <button class="next" onclick="moveSlide(1)">❯</button>
+                </div>
+            </section>
+
+            <section class="joki-menu">
+                <h3>Pilih Layanan Joki Kami</h3>
+                <div class="game-list">
+                    <div class="game-card" data-game="Blox Fruit">
+                        <img src="images/blox_fruit.jpg" alt="Blox Fruit">
+                        <h4>Blox Fruit Joki</h4>
+                        <p>Leveling, Farming, Quest!</p>
+                        <button class="order-btn" data-game="Blox Fruit">Order Sekarang</button>
+                    </div>
+                    <div class="game-card" data-game="King Legacy">
+                        <img src="images/king_legacy.jpg" alt="King Legacy">
+                        <h4>King Legacy Joki</h4>
+                        <p>Grinding Level Cepat!</p>
+                        <button class="order-btn" data-game="King Legacy">Order Sekarang</button>
+                    </div>
+                    <div class="game-card" data-game="Fish">
+                        <img src="images/fish_game.jpg" alt="Fish">
+                        <h4>Fish Joki</h4>
+                        <p>Kumpulkan Semua Ikan Langka!</p>
+                        <button class="order-btn" data-game="Fish">Order Sekarang</button>
+                    </div>
+                    <div class="game-card" data-game="Fish It">
+                        <img src="images/fish_it.jpg" alt="Fish It">
+                        <h4>Fish It Joki</h4>
+                        <p>Bebas Ribet, Anti Capek!</p>
+                        <button class="order-btn" data-game="Fish It">Order Sekarang</button>
+                    </div>
+                    <div class="game-card" data-game="Steal A Brainrot">
+                        <img src="images/brainrot.jpg" alt="Steal A Brainrot">
+                        <h4>Steal A Brainrot Joki</h4>
+                        <p>Dapatkan Item Eksklusif!</p>
+                        <button class="order-btn" data-game="Steal A Brainrot">Order Sekarang</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

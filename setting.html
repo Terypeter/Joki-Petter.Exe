@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joki Petter.Exe | Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkLoginStatus('setting.html')">
+    <div id="main-content">
+        <header>
+            <nav class="navbar">
+                <a href="index.html" class="logo">Petter.Exe Joki</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html" id="login-link">Login</a></li>
+                    
+                    <li class="dropdown" id="user-dropdown" style="display:none;">
+                        <button class="dropbtn">👤 Menu</button>
+                        <div class="dropdown-content">
+                            <a href="profile.html">Profile</a>
+                            <a href="#" onclick="alert('Hubungi kami di WA: 0812xxxxxx')">Contact Me</a>
+                            <a href="setting.html">Setting</a>
+                            <a href="ask.html">Ask</a>
+                            <a href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="setting-page">
+            <h2>Pengaturan Akun</h2>
+            <form id="setting-form">
+                <div class="profile-pic-edit">
+                    <img id="edit-profile-picture" src="images/default_avatar.png" alt="Profile Picture">
+                    <label for="upload-pp" class="upload-label">Ganti Foto Profil</label>
+                    <input type="file" id="upload-pp" accept="image/*" style="display: none;">
+                </div>
+
+                <label for="edit-username">Username</label>
+                <input type="text" id="edit-username" required>
+                
+                <label for="edit-email">Email</label>
+                <input type="email" id="edit-email" required>
+                
+                <label for="edit-current-pass">Password Saat Ini</label>
+                <input type="password" id="edit-current-pass" placeholder="Masukkan password saat ini" required>
+                
+                <label for="edit-new-pass">Password Baru (Opsional)</label>
+                <input type="password" id="edit-new-pass" placeholder="Kosongkan jika tidak ingin ganti">
+                
+                <button type="submit" class="auth-btn">Simpan Perubahan</button>
+            </form>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
