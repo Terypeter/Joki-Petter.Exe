@@ -1,98 +1,59 @@
-/* Import Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* ======================================================= */
+/* 9. STYLE.CSS - FOKUS: DINAMIS, CERAH, MASKULIN, RESPONSIVE */
+/* ======================================================= */
 
+/* WARNA PALET (Dominan: Biru, Cyan, Abu Gelap, Kuning/Orange) */
 :root {
-    /* --- SKEMA WARNA MASKULIN GELAP --- */
-    --primary-color: #1a73e8;      /* Biru Google yang Kuat (Aksen Utama) */
-    --secondary-color: #00bcd4;    /* Cyan/Aqua (Aksen Modern Kedua) */
-    --text-color: #e0e0e0;         /* Teks Putih Pudar untuk Kontras */
-    --bg-color: #2c3e50;          /* Background Biru Tua/Abu-abu Gelap */
-    --card-bg: #34495e;           /* Card Sedikit Lebih Terang dari Background */
-    --border-color: #4a627a;      /* Border Abu-abu Kebiruan */
-    --shadow-dark: rgba(0, 0, 0, 0.3); /* Shadow Lebih Kuat */
-    --font-family: 'Poppins', sans-serif;
+    --primary-color: #0077b6; /* Biru Cerah */
+    --secondary-color: #00b4d8; /* Cyan Cerah */
+    --accent-color: #ffb700; /* Kuning/Emas */
+    --background-dark: #1f2937; /* Abu Gelap/Navy */
+    --background-light: #ffffff;
+    --text-color: #e5e7eb; /* Teks Cerah */
+    --text-dark: #111827;
+    --border-color: #374151;
 }
 
-/* --- Aturan Dasar Responsif & Reset --- */
-*, *::before, *::after {
+/* BASE STYLE & RESET */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* Membuat semua gambar/media tidak meluap dari kontainernya */
-img, video {
-    max-width: 100%;
-    height: auto;
 }
 
 body {
-    font-family: var(--font-family);
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    overflow-x: hidden; /* Mencegah scrolling horizontal yang tidak diinginkan */
-    min-height: 100vh; 
-    display: flex; 
-    flex-direction: column;
+    background-color: var(--background-light);
+    color: var(--text-dark);
 }
 
-#main-content {
-    flex-grow: 1; /* Konten utama akan mengambil semua ruang yang tersedia */
-}
-
-/* Mengatur input agar fleksibel */
-input[type="text"], 
-input[type="password"], 
-input[type="email"],
-input[type="tel"],
-textarea, 
-select {
-    width: 100%; 
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color); 
-    color: var(--text-color);
-    border-radius: 5px;
-    margin-bottom: 10px; /* Tambahkan sedikit margin bawah */
-}
-
-/* -------------------- 9. Loading Screen -------------------- */
+/* --- ANIMASI LOADING AWAL --- */
 #loading-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--card-bg); 
+    background-color: var(--background-dark);
+    color: var(--text-color);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    animation: fadeOut 3s forwards 2s; 
+    font-size: 2em;
+    z-index: 1000;
+    transition: opacity 1s ease-out;
 }
 
-.loading-content {
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 1s forwards 0.5s;
-}
-
-#welcome-text {
-    color: var(--primary-color);
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-shadow: 0 0 8px rgba(26, 115, 232, 0.7);
-}
-
-.spinner {
-    border: 4px solid var(--border-color);
-    border-top: 4px solid var(--secondary-color);
+.loader {
+    border: 8px solid var(--border-color);
+    border-top: 8px solid var(--accent-color);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     animation: spin 1s linear infinite;
-    margin: 0 auto;
+    margin-top: 20px;
 }
 
 @keyframes spin {
@@ -100,54 +61,50 @@ select {
     100% { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-}
-
-/* -------------------- 9. Navbar & Dropdown -------------------- */
-.navbar {
+/* --- HEADER & NAVIGASI --- */
+header {
+    background-color: var(--background-dark);
+    color: var(--text-color);
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
-    background-color: var(--card-bg);
-    box-shadow: 0 2px 10px var(--shadow-dark);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 50;
 }
 
 .logo {
-    font-size: 1.5em;
-    font-weight: 700;
+    font-size: 1.8em;
+    font-weight: bold;
     color: var(--secondary-color);
-    text-decoration: none;
 }
 
-.nav-links {
+nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    align-items: center;
 }
 
-.nav-links a {
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
     color: var(--text-color);
     text-decoration: none;
-    font-weight: 600;
-    padding: 5px 10px;
+    padding: 8px 12px;
     transition: color 0.3s, background-color 0.3s;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
-.nav-links a:hover {
-    color: var(--primary-color);
-    background-color: var(--bg-color);
+nav ul li a:hover {
+    color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* DROP DOWN MENU */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -156,29 +113,28 @@ select {
 .dropbtn {
     background-color: var(--primary-color);
     color: white;
-    padding: 8px 15px;
+    padding: 10px 15px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 4px;
     transition: background-color 0.3s;
 }
 
 .dropbtn:hover {
-    background-color: #1565c0;
+    background-color: var(--secondary-color);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    right: 0;
-    background-color: var(--card-bg);
+    right: 0; /* Pindah ke pojok kanan */
+    background-color: var(--background-dark);
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px var(--shadow-dark);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    border-radius: 5px;
+    border-radius: 4px;
     overflow: hidden;
-    border: 1px solid var(--border-color);
 }
 
 .dropdown-content a {
@@ -186,575 +142,553 @@ select {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    text-align: left;
 }
 
 .dropdown-content a:hover {
-    background-color: var(--bg-color);
-    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* -------------------- 1. Index.html Styles -------------------- */
+/* --- MAIN CONTENT LAYOUT --- */
 main {
-    padding: 20px 50px;
-}
-
-.hero {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 50px;
-}
-
-.profile-store {
-    flex: 0 0 250px;
-    text-align: center;
-    background-color: var(--card-bg);
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px var(--shadow-dark);
-    border: 1px solid var(--border-color);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.profile-pic {
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--background-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+}
+
+/* STORE PROFILE */
+.store-profile {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.store-img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid var(--primary-color);
-    margin-bottom: 10px;
+    border: 5px solid var(--accent-color);
+    margin-bottom: 15px;
 }
 
-/* Slider */
+/* SLIDER (Poto Geser-Geser) */
 .slider-container {
-    flex-grow: 1;
     position: relative;
-    max-width: 800px;
-    margin: auto;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 18px var(--shadow-dark);
-    height: 350px; 
+    width: 100%;
+    max-height: none; /* Batasi Tinggi Slider */
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .slider {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 300%; 
+    height: auto;
 }
 
-.slide {
-    width: 33.333%; 
-    height: 350px;
-    flex-shrink: 0;
-    object-fit: cover; 
+.slider img {
+    width: 100%;
+    min-width: 100%; /* Penting untuk menggeser 100% */
+    height: auto; /* Tinggi Fix */
+    object-fit: contain; /* Solusi blur: Pastikan gambar menyesuaikan tanpa merenggang */
 }
 
-.prev, .next {
+.slider-container button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6); 
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 15px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.5em;
     z-index: 10;
     transition: background-color 0.3s;
 }
 
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+.slider-container button:hover {
+    background-color: var(--primary-color);
 }
 
-.prev { left: 0; border-radius: 0 5px 5px 0; }
-.next { right: 0; border-radius: 5px 0 0 5px; }
+.slider-container .prev { left: 10px; border-radius: 0 5px 5px 0; }
+.slider-container .next { right: 10px; border-radius: 5px 0 0 5px; }
 
-/* Joki Menu */
-.joki-menu h3 {
-    text-align: center;
-    color: var(--secondary-color);
-    margin-bottom: 30px;
-    font-size: 2em;
-    text-shadow: 0 0 5px rgba(0, 188, 212, 0.7);
-}
 
-.game-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
+/* MENU JOKI / GAME CARDS */
+.game-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .game-card {
-    background-color: var(--card-bg);
-    border-radius: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 20px;
-    width: 220px;
     text-align: center;
-    box-shadow: 0 4px 12px var(--shadow-dark);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid var(--border-color);
-    border-top: 3px solid var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(26, 115, 232, 0.5); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .game-card img {
     width: 100%;
-    height: 120px;
+    max-height: 150px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 6px;
     margin-bottom: 15px;
 }
 
 .order-btn {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
+    background-color: var(--accent-color);
+    color: var(--text-dark);
     padding: 10px 20px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    font-weight: bold;
     transition: background-color 0.3s;
-    font-weight: 600;
+    margin-top: 10px;
 }
 
 .order-btn:hover {
-    background-color: #0097a7;
+    background-color: #ffc83b;
 }
 
-/* -------------------- 2. About.html Styles -------------------- */
-.about-page table {
+/* --- ABOUT PAGE STYLES --- */
+.game-explanation table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 40px;
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
+    margin-top: 20px;
 }
 
-.about-page th, .about-page td {
-    padding: 12px 15px;
+.game-explanation th, .game-explanation td {
+    border: 1px solid #ddd;
+    padding: 12px;
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
 }
 
-.about-page th {
-    background-color: var(--primary-color);
+.game-explanation th {
+    background-color: var(--secondary-color);
     color: white;
-    font-weight: 700;
-}
-
-.about-page tr:nth-child(even) {
-    background-color: var(--bg-color); 
+    text-transform: uppercase;
 }
 
 /* Payment Methods */
 .payment-options {
     display: flex;
-    justify-content: center;
-    gap: 30px;
     flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.payment-card {
-    background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    width: 250px;
-    box-shadow: 0 4px 12px var(--shadow-dark);
-    border: 1px solid var(--border-color);
+.payment-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.pay-logo {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
+.payment-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.payment-info {
+    width: 100%;
+    padding: 15px;
     margin-top: 10px;
+    background-color: #f1f1f1;
+    border-left: 5px solid var(--accent-color);
+    border-radius: 4px;
+    display: none; /* Diatur oleh JS */
+    font-weight: bold;
 }
 
-/* QRIS image di about.html */
-.qris-image {
-    max-width: 180px; 
+/* QRIS Modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); 
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 400px; /* Kontrol Ukuran QRIS */
+    text-align: center;
+    border-radius: 8px;
+    position: relative;
+}
+
+.qris-img {
+    max-width: 100%; /* Penting: Mengatasi isu gambar besar/blur */
     height: auto;
     display: block;
     margin: 15px auto;
-    border: 5px solid var(--bg-color); 
-    border-radius: 5px;
 }
 
-/* -------------------- 3, 4. Login/Register Styles -------------------- */
-.auth-page {
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Video Section (Kotak Rapih Kecil) */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Batasan agar video terlihat rapi */
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 350px; /* Tinggi yang cukup */
+    display: block;
+    border-radius: 8px;
+}
+
+
+/* --- LOGIN & REGISTER STYLES (auth-body) --- */
+.auth-body {
+    background: linear-gradient(to right, var(--background-dark), var(--primary-color));
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('images/roblox_bg.jpg') no-repeat center center/cover;
 }
 
-.auth-container {
-    background-color: rgba(52, 73, 94, 0.95); 
+.login-container, .register-container {
+    background-color: white;
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    width: 90%;
     max-width: 400px;
-    border-top: 5px solid var(--primary-color);
-    color: var(--text-color);
+    text-align: center;
 }
 
-.auth-container h2 {
+.login-container h2, .register-container h2 {
     color: var(--primary-color);
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.auth-container p {
-    text-align: center;
     margin-bottom: 25px;
+    border-bottom: none;
 }
 
-.auth-container label {
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
     display: block;
-    margin-top: 15px;
     margin-bottom: 5px;
-    font-weight: 600;
+    font-weight: bold;
+    color: var(--text-dark);
 }
 
-.auth-btn {
+.form-group input, .form-group select, .form-group textarea {
     width: 100%;
-    background-color: var(--secondary-color);
-    color: white;
     padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.auth-btn, .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
     border: none;
     border-radius: 5px;
+    font-size: 1em;
     cursor: pointer;
-    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.auth-btn:hover, .btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.register-link, .login-link {
     margin-top: 20px;
-    transition: background-color 0.3s;
-}
-
-.auth-btn:hover {
-    background-color: #0097a7;
-}
-
-.switch-auth {
-    margin-top: 20px !important;
     font-size: 0.9em;
 }
 
-.switch-auth a {
+.register-link a, .login-link a {
     color: var(--primary-color);
+    font-weight: bold;
     text-decoration: none;
-    font-weight: 600;
 }
 
-/* -------------------- 5, 6, 7. Profile, Order, Setting Styles -------------------- */
-.profile-page, .order-page, .setting-page, .ask-page {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: 0 0 20px var(--shadow-dark);
-    border: 1px solid var(--border-color);
-}
-
+/* --- PROFILE & SETTING STYLES --- */
 .profile-card {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: var(--bg-color);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
+    margin-bottom: 30px;
 }
 
-.profile-img {
-    width: 120px;
-    height: 120px;
+.profile-picture-container {
+    flex-shrink: 0;
+    position: relative;
+}
+
+#profile-pic, #setting-profile-pic {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid var(--secondary-color);
-    margin-bottom: 15px;
+    border: 4px solid var(--accent-color);
 }
 
-.edit-btn {
-    display: inline-block;
+.profile-info p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.profile-info strong {
+    color: var(--primary-color);
+}
+
+.profile-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.primary-btn {
     background-color: var(--primary-color);
     color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+    width: auto !important;
 }
-
-.edit-btn:hover { background-color: #1565c0; }
-
-/* Order Form & Setting Form */
-.order-page form, .setting-page form {
-    display: grid;
-    gap: 15px;
-}
-
-.order-page label, .setting-page label {
-    font-weight: 600;
-}
-
-.order-page textarea { resize: vertical; }
-
-.order-submit-btn { margin-top: 30px; }
-
-fieldset {
-    border: 1px solid var(--border-color);
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-legend {
-    color: var(--secondary-color);
-    padding: 0 10px;
-    font-weight: 700;
-}
-
-/* Tambahan CSS untuk Orderan */
-.price-display {
-    padding: 15px;
-    background-color: var(--bg-color); 
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    margin-top: 10px;
-    font-size: 1.1em;
-    font-weight: 700;
-    color: var(--secondary-color);
-    text-align: center;
-}
-
-.price-display strong {
-    color: var(--primary-color);
-}
-
-/* CSS Khusus QRIS di order.html */
-.qris-image-live {
-    max-width: 100%; 
-    height: auto;
-    width: 300px; /* Ukuran default yang cukup besar di desktop */
-    display: block;
-    margin: 0 auto; 
-    border: 5px solid var(--card-bg); 
-    border-radius: 10px;
-}
-
-/* Setting Page Specific */
-.profile-pic-edit {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.profile-pic-edit img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--primary-color);
-}
-
-.upload-label {
-    display: inline-block;
-    cursor: pointer;
-    background-color: var(--secondary-color);
+.danger-btn {
+    background-color: #ef4444; /* Merah */
     color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-top: 10px;
+    width: auto !important;
 }
 
-/* -------------------- 8. Ask.html Styles -------------------- */
-.ask-page h3 {
-    border-left: 4px solid var(--primary-color);
-    padding-left: 10px;
-    margin-bottom: 20px;
-}
-
-.ask-form-section {
+/* SETTING PAGE SPECIFIC */
+.setting-page section {
     padding: 20px;
-    background-color: var(--bg-color);
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+}
+
+.profile-pic-setting {
+    text-align: center;
+}
+
+#upload-profile-pic {
+    margin: 15px auto;
+    display: block;
+}
+
+.back-to-profile {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* --- ORDER PAGE STYLES --- */
+.order-page form {
+    padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    margin-bottom: 40px;
-    border: 1px solid var(--border-color);
+    background-color: #f9f9f9;
 }
 
-.question-list-section {
-    padding: 20px;
+.warning-text {
+    color: #ef4444;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
 }
 
-.question-item {
-    background-color: var(--bg-color);
+/* --- ASK/QNA STYLES --- */
+.qna-item {
+    background-color: #f1f1f1;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
     border-left: 5px solid var(--secondary-color);
+    position: relative;
 }
 
-.question-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.qna-question {
     margin-bottom: 10px;
-    font-size: 0.9em;
-    color: var(--primary-color);
-}
-
-.question-text {
     font-size: 1.1em;
-    font-weight: 600;
+}
+
+.qna-actions {
     margin-bottom: 10px;
 }
 
-.answer-text {
+.small-btn {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    width: auto;
+    margin-right: 5px;
+}
+
+.edit-btn { background-color: var(--accent-color); color: var(--text-dark); }
+.delete-btn { background-color: #9ca3af; }
+
+.qna-reply {
     margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed var(--border-color);
+    padding: 10px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    border-left: 3px solid var(--primary-color);
 }
 
-.answer-text strong { color: var(--secondary-color); }
-
-.admin-controls button {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    cursor: pointer;
-    margin-left: 10px;
-    font-size: 0.9em;
-    transition: color 0.3s;
+.admin-tools {
+    border: 2px dashed #ef4444;
+    padding: 20px;
+    background-color: #fee2e2;
 }
 
-.admin-controls button:hover {
-    color: var(--secondary-color);
-}
-
-/* -------------------- 10. FOOTER STYLES -------------------- */
-.main-footer {
-    background-color: var(--card-bg);
+/* --- FOOTER --- */
+footer {
+    background-color: var(--background-dark);
     color: var(--text-color);
-    padding: 25px 50px;
     text-align: center;
-    border-top: 3px solid var(--primary-color); 
+    padding: 15px;
+    margin-top: 40px;
     font-size: 0.9em;
-    margin-top: 40px; 
 }
 
-.footer-content p {
-    margin: 5px 0;
-}
-
-.footer-content a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-content a:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
-}
-
-/* ====================================================== */
-/* 🚨 MEDIA QUERIES (RESPONSIVITAS HP) 🚨 */
-/* ====================================================== */
-@media (max-width: 900px) {
-    /* Umum */
-    main {
-        padding: 20px;
-    }
-
-    /* Hero Section (Index) */
-    .hero {
+/* --- MEDIA QUERIES (RESPONSIVENESS) --- */
+@media (max-width: 768px) {
+    header {
         flex-direction: column;
-        gap: 20px;
     }
 
-    /* Slider di HP */
-    .slider-container {
-        height: 250px; 
-    }
-    .slide {
-        height: 250px;
-    }
-
-    /* Navigasi di HP */
-    .navbar {
-        padding: 15px 20px;
-    }
-    .nav-links {
-        gap: 15px;
-    }
-}
-
-@media (max-width: 600px) {
-    /* Card/Halaman */
-    .profile-page, .order-page, .setting-page, .ask-page {
-        margin: 20px auto;
-        padding: 15px;
-        border-radius: 5px;
-    }
-
-    /* Navigasi di HP Kecil (Sederhana) */
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    .nav-links {
-        width: 100%;
-        justify-content: space-around;
-        gap: 5px;
+    nav ul {
         margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    .nav-links a, .dropbtn {
-        padding: 8px 5px;
-        font-size: 0.9em;
+
+    nav ul li {
+        margin: 5px 10px;
     }
+
     .dropdown {
-        flex-grow: 1;
-        text-align: right;
+        width: 100%;
+        text-align: center;
     }
+
+    .dropbtn {
+        width: 100%;
+    }
+
     .dropdown-content {
-        right: auto;
+        position: static;
+        width: 100%;
+    }
+
+    /* ======================================================= */
+    /* PERBAIKAN SLIDER UNTUK MOBILE: MENGGUNAKAN ASPECT RATIO */
+    /* ======================================================= */
+
+    .slider-container {
+        /* Hapus max-height yang kaku */
+        max-height: none; 
+        
+        /* Teknik Aspect Ratio (Rasio 2:1): */
+        height: 0; 
+        padding-bottom: 50%; /* 50% dari lebar = Rasio 2:1 */
+        position: relative; 
+    }
+
+    .slider {
+        /* Wajib: Mengisi penuh kontainer yang tingginya diatur padding */
+        position: absolute;
+        top: 0;
         left: 0;
-        min-width: 100%;
+        height: 100%;
     }
 
-    /* Game List di HP */
-    .game-list {
-        gap: 15px;
-    }
-    .game-card {
-        width: 45%; /* Dua kolom di HP */
-    }
-
-    /* QRIS Responsif */
-    .qris-image-live {
-        width: 80%; /* Gambar akan mengambil 80% dari lebar kontainer */
-        max-width: 200px; /* Batasi maksimal 200px agar tidak terlalu besar di beberapa HP */
+    .slider img {
+        /* Ganti tinggi kaku (300px) menjadi mengisi 100% tinggi kontainer */
+        height: 100%; 
+        /* Pastikan gambar tidak terpotong */
+        object-fit: contain; 
     }
 
-    /* Footer Responsif */
-    .main-footer {
-        padding: 20px;
+    /* ======================================================= */
+
+    .game-cards {
+        grid-template-columns: 1fr; /* Satu kolom di mobile */
     }
-    .footer-content p {
-        font-size: 0.8em;
+
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .profile-actions {
+        justify-content: center;
     }
 }

@@ -3,57 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joki Petter.Exe | Ask & Q&A</title>
+    <title>Ask & QnA | Joki Petter.Exe</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="checkLoginStatus('ask.html')">
-    <div id="main-content">
-        <header>
-            <nav class="navbar">
-                <a href="index.html" class="logo">Petter.Exe Joki</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="login.html" id="login-link">Login</a></li>
-                    
-                    <li class="dropdown" id="user-dropdown" style="display:none;">
-                        <button class="dropbtn">👤 Menu</button>
-                        <div class="dropdown-content">
-                            <a href="profile.html">Profile</a>
-                            <a href="#" onclick="alert('Hubungi kami di WA: 0812xxxxxx')">Contact Me</a>
-                            <a href="setting.html">Setting</a>
-                            <a href="ask.html">Ask</a>
-                            <a href="#" onclick="logout()">Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+<body onload="checkAuth()">
+    <header>
+        <div class="logo">Petter.Exe Joki</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Akun & Lainnya</button>
+                    <div class="dropdown-content">
+                        <a href="profile.html">Profile</a>
+                        <a href="contact.html">Contact Me</a>
+                        <a href="setting.html">Setting</a>
+                        <a href="ask.html">Ask / QnA</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <main class="ask-page">
-            <h2>Kotak Pertanyaan (Q&A) 💬</h2>
-            
-            <section class="ask-form-section">
-                <h3>Ajukan Pertanyaan Anda</h3>
-                <form id="ask-form">
-                    <input type="text" id="ask-subject" placeholder="Subjek Pertanyaan" required>
-                    <textarea id="ask-question" rows="4" placeholder="Tulis pertanyaan Anda di sini..." required></textarea>
-                    <button type="submit" class="auth-btn">Kirim Pertanyaan</button>
-                </form>
-            </section>
+    <main class="ask-page">
+        <h2>Tanya Jawab (QnA)</h2>
 
-            <section class="question-list-section">
-                <h3>Semua Pertanyaan</h3>
-                <div id="question-list">
-                    <p style="text-align: center; padding: 20px;">Memuat pertanyaan...</p>
+        <section class="ask-form-section">
+            <h3>Ajukan Pertanyaan Anda</h3>
+            <form id="askForm">
+                <div class="form-group">
+                    <label for="ask-question">Pertanyaan Anda</label>
+                    <textarea id="ask-question" name="question" rows="4" required></textarea>
                 </div>
+                <button type="submit" class="btn primary-btn">Kirim Pertanyaan</button>
+            </form>
+        </section>
+
+        <section class="qna-list-section">
+            <h3>Kotak Masuk Pertanyaan (Terlihat oleh Semua)</h3>
+            <div id="qna-container">
+                <div class="qna-item" data-id="1">
+                    <p class="qna-question"><strong>UserA:</strong> Apakah bisa joki Blox Fruit sampai level 2550 dalam 3 hari?</p>
+                    <div class="qna-actions">
+                        <button class="btn small-btn edit-btn" onclick="editQuestion('1')">Edit</button>
+                        <button class="btn small-btn delete-btn" onclick="deleteQuestion('1')">Hapus</button>
+                    </div>
+
+                    <div class="qna-reply admin-only" data-admin-reply="false">
+                        <p class="admin-reply-text"><strong>Petter.Exe (Admin):</strong> Tergantung tier buah Anda, silakan hubungi WA untuk estimasi akurat!</p>
+                        <button class="btn small-btn reply-btn" onclick="openReplyForm('1')">Balas/Edit Balasan</button>
+                    </div>
+                </div>
+                </div>
+        </section>
+        
+        <section id="admin-panel" class="admin-tools">
+            <h3>Admin Tools: Balas Pertanyaan</h3>
+            <p>Admin: **Petter.exe**</p>
             </section>
-        </main>
-    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joki Petter.Exe. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
-    <script>
-        // Panggil renderQuestions setelah DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', renderQuestions);
-    </script>
 </body>
 </html>

@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joki Petter.Exe | Login</title>
+    <title>Login | Joki Petter.Exe</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="auth-page">
-    <div class="auth-container">
-        <h2>👋 Selamat Datang Kembali</h2>
-        <p>Silakan masuk untuk melanjutkan pesanan Anda.</p>
-        <form id="login-form">
-            <label for="username">Username / Email</label>
-            <input type="text" id="username" required>
-            
-            <label for="password">Password</label>
-            <input type="password" id="password" required>
-            
-            <button type="submit" class="auth-btn">Masuk</button>
-            <p class="switch-auth">Belum punya akun? <a href="register.html">Daftar disini</a></p>
+<body class="auth-body">
+    <div class="login-container">
+        <h2>Masuk ke Akun Anda</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="login-username">Username/Email</label>
+                <input type="text" id="login-username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <button type="submit" class="auth-btn">Login</button>
         </form>
+        
+        <p class="register-link">
+            Belum punya akun? <a href="register.html">Daftar disini</a>
+        </p>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

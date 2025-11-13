@@ -3,54 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joki Petter.Exe | Profile</title>
+    <title>Profile | Joki Petter.Exe</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="checkLoginStatus('profile.html')">
-    <div id="main-content">
-        <header>
-            <nav class="navbar">
-                <a href="index.html" class="logo">Petter.Exe Joki</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="login.html" id="login-link">Login</a></li>
-                    
-                    <li class="dropdown" id="user-dropdown" style="display:none;">
-                        <button class="dropbtn">👤 Menu</button>
-                        <div class="dropdown-content">
-                            <a href="profile.html">Profile</a>
-                            <a href="#" onclick="alert('Hubungi kami di WA: 0812xxxxxx')">Contact Me</a>
-                            <a href="setting.html">Setting</a>
-                            <a href="ask.html">Ask</a>
-                            <a href="#" onclick="logout()">Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+<body onload="checkAuthAndLoadProfile()">
+    <header>
+        <div class="logo">Petter.Exe Joki</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Akun & Lainnya</button>
+                    <div class="dropdown-content">
+                        <a href="profile.html">Profile</a>
+                        <a href="contact.html">Contact Me</a>
+                        <a href="setting.html">Setting</a>
+                        <a href="ask.html">Ask / QnA</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <main class="profile-page">
-            <h2>Informasi Profile Anda</h2>
-            
-            <div class="profile-card">
-                <img id="profile-picture" src="images/default_avatar.png" alt="Profile Picture" class="profile-img">
-                <h3 id="display-username">Nama Pengguna</h3>
-                <p><strong>Email:</strong> <span id="display-email">email@contoh.com</span></p>
-                <p><strong>Status:</strong> Aktif</p>
+    <main class="profile-page">
+        <h2>Informasi Profile Pengguna</h2>
+
+        <div class="profile-card">
+            <div class="profile-picture-container">
+                <img id="profile-pic" src="assets/images/default-profile.jpg" alt="Profile Picture">
+            </div>
+
+            <div class="profile-info">
+                <p><strong>Username:</strong> <span id="display-username">Loading...</span></p>
+                <p><strong>Email:</strong> <span id="display-email">Loading...</span></p>
+                <p><strong>Status:</strong> <span id="display-status">Member</span></p>
                 
-                <a href="setting.html" class="edit-btn">⚙️ Edit Profile & Setting</a>
+                <div class="profile-actions">
+                    <a href="setting.html" class="btn primary-btn">Edit Profile</a>
+                    <button onclick="logout()" class="btn danger-btn">Logout</button>
+                </div>
             </div>
-            
-            <div class="order-history">
-                <h3>Riwayat Pesanan (Simulasi)</h3>
-                <ul>
-                    <li>[12/10/2025] - Joki Blox Fruit Leveling (Selesai)</li>
-                    <li>[01/11/2025] - Joki King Legacy Farming (Diproses)</li>
-                </ul>
-            </div>
-        </main>
-    </div>
+        </div>
+        
+        <section class="order-history">
+            <h3>Riwayat Order Terakhir</h3>
+            <ul id="history-list">
+                <li>Belum ada order.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joki Petter.Exe. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

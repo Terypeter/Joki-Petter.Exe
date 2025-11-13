@@ -3,58 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joki Petter.Exe | Settings</title>
+    <title>Setting | Joki Petter.Exe</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="checkLoginStatus('setting.html')">
-    <div id="main-content">
-        <header>
-            <nav class="navbar">
-                <a href="index.html" class="logo">Petter.Exe Joki</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="login.html" id="login-link">Login</a></li>
-                    
-                    <li class="dropdown" id="user-dropdown" style="display:none;">
-                        <button class="dropbtn">👤 Menu</button>
-                        <div class="dropdown-content">
-                            <a href="profile.html">Profile</a>
-                            <a href="#" onclick="alert('Hubungi kami di WA: 0812xxxxxx')">Contact Me</a>
-                            <a href="setting.html">Setting</a>
-                            <a href="ask.html">Ask</a>
-                            <a href="#" onclick="logout()">Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+<body onload="checkAuthAndLoadSetting()">
+    <header>
+        <div class="logo">Petter.Exe Joki</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Akun & Lainnya</button>
+                    <div class="dropdown-content">
+                        <a href="profile.html">Profile</a>
+                        <a href="contact.html">Contact Me</a>
+                        <a href="setting.html">Setting</a>
+                        <a href="ask.html">Ask / QnA</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <main class="setting-page">
-            <h2>Pengaturan Akun</h2>
-            <form id="setting-form">
-                <div class="profile-pic-edit">
-                    <img id="edit-profile-picture" src="images/default_avatar.png" alt="Profile Picture">
-                    <label for="upload-pp" class="upload-label">Ganti Foto Profil</label>
-                    <input type="file" id="upload-pp" accept="image/*" style="display: none;">
+    <main class="setting-page">
+        <h2>Pengaturan Akun</h2>
+
+        <section class="profile-pic-setting">
+            <h3>Ganti Foto Profile</h3>
+            <img id="setting-profile-pic" src="assets/images/default-profile.jpg" alt="Profile Picture">
+            <input type="file" id="upload-profile-pic" accept="image/*">
+            <button onclick="saveProfilePicture()" class="btn primary-btn">Simpan Foto</button>
+            <p class="note">Foto akan otomatis terlihat di halaman Profile.</p>
+        </section>
+        
+        <section class="account-info-setting">
+            <h3>Edit Informasi Akun</h3>
+            <form id="updateInfoForm">
+                <div class="form-group">
+                    <label for="edit-username">Username Baru</label>
+                    <input type="text" id="edit-username" name="username" required>
                 </div>
-
-                <label for="edit-username">Username</label>
-                <input type="text" id="edit-username" required>
-                
-                <label for="edit-email">Email</label>
-                <input type="email" id="edit-email" required>
-                
-                <label for="edit-current-pass">Password Saat Ini</label>
-                <input type="password" id="edit-current-pass" placeholder="Masukkan password saat ini" required>
-                
-                <label for="edit-new-pass">Password Baru (Opsional)</label>
-                <input type="password" id="edit-new-pass" placeholder="Kosongkan jika tidak ingin ganti">
-                
-                <button type="submit" class="auth-btn">Simpan Perubahan</button>
+                <div class="form-group">
+                    <label for="edit-email">Email Baru</label>
+                    <input type="email" id="edit-email" name="email" required>
+                </div>
+                <button type="submit" class="btn primary-btn">Update Informasi</button>
             </form>
-        </main>
-    </div>
+        </section>
+
+        <section class="password-setting">
+            <h3>Ganti Password</h3>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="current-password">Password Saat Ini</label>
+                    <input type="password" id="current-password" name="current-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">Password Baru</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-new-password">Konfirmasi Password Baru</label>
+                    <input type="password" id="confirm-new-password" name="confirm-new-password" required>
+                </div>
+                <button type="submit" class="btn danger-btn">Ganti Password</button>
+            </form>
+        </section>
+        
+        <div class="back-to-profile">
+            <a href="profile.html">Kembali ke Profile</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joki Petter.Exe. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -3,96 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joki Petter.Exe | Home</title>
+    <title>Home | Joki Petter.Exe</title>
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body>
     <div id="loading-screen">
-        <div class="loading-content">
-            <h1 id="welcome-text">Welcome To Joki Petter.Exe</h1>
-            <div class="spinner"></div>
-        </div>
+        <h1>Welcome To Joki Petter.Exe</h1>
+        <div class="loader"></div>
     </div>
+    <audio id="background-music" loop autoplay>
+        <source src="mp3.unknown" type="audio/mp3">
+        Musik tidak didukung di browser ini.
+    </audio>
 
-    <div id="main-content" style="display: none;">
-        <header>
-            <nav class="navbar">
-                <a href="index.html" class="logo">Petter.Exe Joki</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="login.html" id="login-link">Login</a></li>
-                    
-                    <li class="dropdown" id="user-dropdown" style="display:none;">
-                        <button class="dropbtn">👤 Menu</button>
-                        <div class="dropdown-content">
-                            <a href="profile.html">Profile</a>
-                            <a href="#" onclick="alert('Hubungi kami di WA: 0812xxxxxx')">Contact Me</a>
-                            <a href="setting.html">Setting</a>
-                            <a href="ask.html">Ask</a>
-                            <a href="#" onclick="logout()">Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+    <header>
+        <div class="logo">Petter.Exe Roblox Game</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Akun & Lainnya</button>
+                    <div class="dropdown-content">
+                        <a href="profile.html">Profile</a>
+                        <a href="contact.html">Contact Me</a>
+                        <a href="setting.html">Setting</a>
+                        <a href="ask.html">Ask / QnA</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-        <main>
-            <section class="hero">
-                <div class="profile-store">
-                    <img src="profile.jpg" alt="Profile Store Petter.Exe" class="profile-pic">
-                    <h2>Petter.Exe Joki Services</h2>
-                    <p>Layanan Joki Game Roblox Terpercaya</p>
+    <main>
+        <section class="store-profile">
+            <img src="profile.jpg" alt="Foto Profile Store" class="store-img">
+            <h2>Layanan Joki Game Roblox Terpercaya</h2>
+        </section>
+
+        <section class="slider-container">
+            <div class="slider">
+                <img src="https://tr.rbxcdn.com/180DAY-37cc49a6bdb03b5a4394db84ff264fe5/768/432/Image/Webp/noFilter" alt="Slider 1: Blox Fruit">
+                <img src="https://tr.rbxcdn.com/180DAY-da431c483c048ebaba0c0caeb17d5770/768/432/Image/Webp/noFilter" alt="Slider 2: King Legacy">
+                <img src="https://tr.rbxcdn.com/180DAY-f446c1264701227ae463835b155f44af/768/432/Image/Webp/noFilter" alt="Slider 3: Fish It">
+            </div>
+            <button class="prev" onclick="moveSlider(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlider(1)">&#10095;</button>
+        </section>
+
+        <section class="joki-menu">
+            <h3>Pilih Layanan Joki Anda</h3>
+            <div class="game-cards">
+                <div class="game-card" data-game="Blox Fruit">
+                    <img src="https://tr.rbxcdn.com/180DAY-134b47130e25f3c688ebd1ab54456e01/768/432/Image/Webp/noFilter" alt="Blox Fruit Logo">
+                    <h4>Blox Fruit Joki</h4>
+                    <button class="order-btn" onclick="goToOrder('Blox Fruit')">Order Sekarang</button>
+                </div>
+
+                <div class="game-card" data-game="King Legacy">
+                    <img src="https://tr.rbxcdn.com/180DAY-758281fb1d0ce4ae98731c5d154c161b/768/432/Image/Webp/noFilter" alt="King Legacy Logo">
+                    <h4>King Legacy Joki</h4>
+                    <button class="order-btn" onclick="goToOrder('King Legacy')">Order Sekarang</button>
+                </div>
+
+                <div class="game-card" data-game="Fish">
+                    <img src="https://tr.rbxcdn.com/180DAY-1d81cac061bdcd72d50bc61b2f83edc0/768/432/Image/Webp/noFilter" alt="Fish Joki Logo">
+                    <h4>Fish Joki</h4>
+                    <button class="order-btn" onclick="goToOrder('Fish')">Order Sekarang</button>
                 </div>
                 
-                <div class="slider-container">
-                    <div class="slider" id="main-slider">
-                        <img src="images/slider1.jpg" alt="Slider Image 1" class="slide">
-                        <img src="images/slider2.jpg" alt="Slider Image 2" class="slide">
-                        <img src="images/slider3.jpg" alt="Slider Image 3" class="slide">
-                    </div>
-                    <button class="prev" onclick="moveSlide(-1)">❮</button>
-                    <button class="next" onclick="moveSlide(1)">❯</button>
+                <div class="game-card" data-game="Fish It">
+                    <img src="https://tr.rbxcdn.com/180DAY-be35f2073fc57acf2b029d4263e94790/768/432/Image/Webp/noFilter" alt="Fish It Joki Logo">
+                    <h4>Fish It Joki</h4>
+                    <button class="order-btn" onclick="goToOrder('Fish It')">Order Sekarang</button>
                 </div>
-            </section>
 
-            <section class="joki-menu">
-                <h3>Pilih Layanan Joki Kami</h3>
-                <div class="game-list">
-                    <div class="game-card" data-game="Blox Fruit">
-                        <img src="images/blox_fruit.jpg" alt="Blox Fruit">
-                        <h4>Blox Fruit Joki</h4>
-                        <p>Leveling, Farming, Quest!</p>
-                        <button class="order-btn" data-game="Blox Fruit">Order Sekarang</button>
-                    </div>
-                    <div class="game-card" data-game="King Legacy">
-                        <img src="images/king_legacy.jpg" alt="King Legacy">
-                        <h4>King Legacy Joki</h4>
-                        <p>Grinding Level Cepat!</p>
-                        <button class="order-btn" data-game="King Legacy">Order Sekarang</button>
-                    </div>
-                    <div class="game-card" data-game="Fish">
-                        <img src="images/fish_game.jpg" alt="Fish">
-                        <h4>Fish Joki</h4>
-                        <p>Kumpulkan Semua Ikan Langka!</p>
-                        <button class="order-btn" data-game="Fish">Order Sekarang</button>
-                    </div>
-                    <div class="game-card" data-game="Fish It">
-                        <img src="images/fish_it.jpg" alt="Fish It">
-                        <h4>Fish It Joki</h4>
-                        <p>Bebas Ribet, Anti Capek!</p>
-                        <button class="order-btn" data-game="Fish It">Order Sekarang</button>
-                    </div>
-                    <div class="game-card" data-game="Steal A Brainrot">
-                        <img src="images/brainrot.jpg" alt="Steal A Brainrot">
-                        <h4>Steal A Brainrot Joki</h4>
-                        <p>Dapatkan Item Eksklusif!</p>
-                        <button class="order-btn" data-game="Steal A Brainrot">Order Sekarang</button>
-                    </div>
+                <div class="game-card" data-game="Steal A Brainrot">
+                    <img src="https://tr.rbxcdn.com/180DAY-a5434f50e5846e446aab631fbf0a92e7/768/432/Image/Webp/noFilter" alt="Steal A Brainrot Logo">
+                    <h4>Steal A Brainrot Joki</h4>
+                    <button class="order-btn" onclick="goToOrder('Steal A Brainrot')">Order Sekarang</button>
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Joki Petter.Exe. All rights reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
