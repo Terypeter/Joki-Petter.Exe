@@ -9,23 +9,24 @@ const dataGame = {
     "Blox Fruit": {
         "Leveling (1 - 1000)": 50000,
         "Leveling (1000 - MAX)": 150000,
-        "Farming Fragment (10k)": 30000,
-        "Mencari Ras V4": 200000 
+        "Farming Fragment (10k)": 25000,
+        "Race v4": 200000 
     },
     "King Legacy": {
-        "Leveling (1 - 1000)": 45000,
+        "Leveling (1 - 1000)": 30000,
         "Farming Gems (500)": 60000,
         "Awakening Buah": 100000,
-        "Farming Beli (100M)": 75000
+        "Farming Beli (100M)": 50000
     },
     "Fish": {
-        "Farming Gold (1M)": 20000,
-        "Grinding Exp (1 Level)": 15000
+        "Farming Gold (1M)": 5000,
+        "100 LEVEL": 25000,
+        "Hunting Event Max 10": 20000
     },
     "Fish It": {
         // Menu Joki Spesifik Fish It
         "Dapetin Rare Rod": 50000,
-        "Farming Coin (5M)": 40000,
+        "Farming Coin (5M)": 100000,
         "Tangkap Ikan Secret (1x)": 70000 
     },
     "Steal A Brainrot": {
@@ -487,13 +488,13 @@ function handleOrderSubmission(form) {
                   : 'Hubungi Admin'; 
     
     // Link WA Redirect
-    const waNumber = '6283154983099'; // Nomor Admin
+    const waNumber = '6283899392700'; // Nomor Admin
     let waMessage = `Halo Admin Petter.Exe, saya ingin konfirmasi order joki:\n`;
     waMessage += `\n*Game:* ${selectedGame}`;
     waMessage += `\n*Layanan:* ${selectedService}`;
     waMessage += `\n*Estimasi Harga:* Rp ${price.toLocaleString('id-ID')}`; 
     waMessage += `\n*Username Roblox:* ${robloxUser}`;
-    waMessage += `\n*Password Roblox:* (Sudah diisi di Form, tolong cek sistem)`;
+    waMessage += `\n*Password Roblox:* (Sudah diisi di Form)`;
     waMessage += `\n*Metode Bayar:* ${paymentMethod.toUpperCase()}`;
     waMessage += `\n*Nomor Kontak:* ${contactPhone}`;
     waMessage += `\n*Catatan:* ${notes}`;
